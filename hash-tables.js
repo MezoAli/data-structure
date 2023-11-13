@@ -55,8 +55,8 @@ obj.set("pomegrnate", 2000);
 obj.set("onions", 20);
 obj.set("lemon", 160);
 // console.log(obj.get("apples"));
-console.log(obj.keys());
-console.log(obj);
+// console.log(obj.keys());
+// console.log(obj);
 
 // Interview Question => First Occuring Character
 // [1,3,5,7,9,2,4,5,1,2,7] => 5
@@ -72,4 +72,16 @@ const firstOccuringElement = (arr) => {
   return undefined;
 };
 
-console.log(firstOccuringElement([0, 3, 5, 13, 9, 2, 4, 10, 1, 2, 7]));
+// console.log(firstOccuringElement([0, 3, 5, 13, 9, 2, 4, 10, 1, 2, 7]));
+
+const firstOccuringElement2 = (arr) => {
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (obj[arr[i]]) {
+      return arr[i];
+    }
+    obj[arr[i]] = arr[i];
+  }
+  return undefined;
+};
+// console.log(firstOccuringElement2([1, 3, 5, 7, 9, 9]));
