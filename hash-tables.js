@@ -57,3 +57,19 @@ obj.set("lemon", 160);
 // console.log(obj.get("apples"));
 console.log(obj.keys());
 console.log(obj);
+
+// Interview Question => First Occuring Character
+// [1,3,5,7,9,2,4,5,1,2,7] => 5
+
+const firstOccuringElement = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        return arr[i];
+      }
+    }
+  }
+  return undefined;
+};
+
+console.log(firstOccuringElement([0, 3, 5, 13, 9, 2, 4, 10, 1, 2, 7]));
