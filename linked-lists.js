@@ -138,18 +138,22 @@ class DoublyLinkedList {
       this.append(value);
       return this;
     }
-    let newNode = new Node(value);
+    let newNode = new DoublyNode(value);
     let leader = this.traverseToIndex(index - 1);
     let afterNode = leader?.next;
-    leader.next = newNode;
+    newNode.prev = leader;
     newNode.next = afterNode;
+    leader.next = newNode;
+    afterNode.prev = newNode;
     this.length++;
   }
 
   remove(index) {
     let leader = this.traverseToIndex(index - 1);
-    const nodeToRemoved = leader.next;
-    leader.next = nodeToRemoved.next;
+    let nodeToRemoved = leader.next;
+    let afterNode = nodeToRemoved.next;
+    leader.next = afterNode;
+    afterNode.prev = leader;
     this.length--;
     return this;
   }
@@ -160,4 +164,6 @@ myDoublyLinkedList.append(2);
 myDoublyLinkedList.append(3);
 myDoublyLinkedList.prepend(0);
 myDoublyLinkedList.prepend(-1);
+myDoublyLinkedList.insert(2, 100);
+myDoublyLinkedList.remove(2);
 console.log(myDoublyLinkedList);
