@@ -66,15 +66,24 @@ class LinkedList {
     newNode.next = afterNode;
     this.length++;
   }
+
+  remove(index) {
+    let leader = this.traverseToIndex(index - 1);
+    const nodeToRemoved = leader.next;
+    leader.next = nodeToRemoved.next;
+    this.length--;
+    return this;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
-myLinkedList.append(16);
+// myLinkedList.append(16);
 myLinkedList.prepend(1);
-myLinkedList.prepend(9);
-myLinkedList.insert(99, 23);
-myLinkedList.insert(2, 100);
+// myLinkedList.prepend(9);
+// myLinkedList.insert(99, 23);
+// myLinkedList.insert(2, 100);
 myLinkedList.insert(2, 101);
+myLinkedList.remove(2);
 
 console.log(myLinkedList);
