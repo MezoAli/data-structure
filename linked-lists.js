@@ -30,6 +30,19 @@ class LinkedList {
     this.length = 1;
   }
 
+  printValuesLikeArray() {
+    let counter = 0;
+    let currentNode = this.head;
+    const values = [];
+    while (counter < this.length) {
+      values.push(currentNode.value);
+      currentNode = currentNode.next;
+      counter++;
+    }
+    console.log(values);
+    return values;
+  }
+
   append(value) {
     const newNode = new Node(value);
     this.tail.next = newNode;
@@ -157,6 +170,19 @@ class DoublyLinkedList {
     this.length--;
     return this;
   }
+
+  printValuesLikeArray() {
+    let counter = 0;
+    let currentNode = this.head;
+    const values = [];
+    while (counter < this.length) {
+      values.push(currentNode.value);
+      currentNode = currentNode.next;
+      counter++;
+    }
+    console.log(values);
+    return values;
+  }
 }
 
 const myDoublyLinkedList = new DoublyLinkedList(1);
@@ -166,4 +192,5 @@ myDoublyLinkedList.prepend(0);
 myDoublyLinkedList.prepend(-1);
 myDoublyLinkedList.insert(2, 100);
 myDoublyLinkedList.remove(2);
+myDoublyLinkedList.printValuesLikeArray();
 console.log(myDoublyLinkedList);
