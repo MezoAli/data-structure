@@ -87,17 +87,37 @@ class LinkedList {
     this.length--;
     return this;
   }
+
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this;
+  }
 }
 
-const myLinkedList = new LinkedList(10);
-// myLinkedList.append(5);
-// myLinkedList.append(16);
-// myLinkedList.prepend(1);
+const myLinkedList = new LinkedList(1);
+myLinkedList.append(2);
+myLinkedList.append(3);
+myLinkedList.prepend(0);
+myLinkedList.reverse();
 // myLinkedList.prepend(9);
 // myLinkedList.insert(99, 23);
 // myLinkedList.insert(2, 100);
 // myLinkedList.insert(2, 101);
 // myLinkedList.remove(2);
+myLinkedList.printValuesLikeArray();
 
 // console.log(myLinkedList);
 
@@ -186,11 +206,11 @@ class DoublyLinkedList {
 }
 
 const myDoublyLinkedList = new DoublyLinkedList(1);
-myDoublyLinkedList.append(2);
-myDoublyLinkedList.append(3);
-myDoublyLinkedList.prepend(0);
-myDoublyLinkedList.prepend(-1);
-myDoublyLinkedList.insert(2, 100);
-myDoublyLinkedList.remove(2);
-myDoublyLinkedList.printValuesLikeArray();
-console.log(myDoublyLinkedList);
+// myDoublyLinkedList.append(2);
+// myDoublyLinkedList.append(3);
+// myDoublyLinkedList.prepend(0);
+// myDoublyLinkedList.prepend(-1);
+// myDoublyLinkedList.insert(2, 100);
+// myDoublyLinkedList.remove(2);
+// myDoublyLinkedList.printValuesLikeArray();
+// console.log(myDoublyLinkedList);
