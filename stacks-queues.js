@@ -143,10 +143,58 @@ const myQueue = new Queue();
 myQueue.enqueue("Google");
 myQueue.enqueue("Youtube");
 myQueue.enqueue("Discord");
-console.log(myQueue.peek());
+// console.log(myQueue.peek());
 myQueue.dequeue();
 myQueue.dequeue();
-console.log(myQueue.peek());
+// console.log(myQueue.peek());
 myQueue.dequeue();
 
-console.log(myQueue);
+// console.log(myQueue);
+
+// implement Queue using Stack
+class QueueStack {
+  constructor() {
+    this.data = new Stack();
+  }
+
+  enqueue(value) {
+    const newNode = new Node(value);
+    if (this.data.length === 0) {
+      this.data.top = newNode;
+      this.data.bottom = newNode;
+    } else {
+      this.data.bottom.next = newNode;
+      this.data.bottom = newNode;
+    }
+    this.data.length++;
+    return this.data;
+  }
+
+  peek() {
+    return this.data.top.value;
+  }
+
+  dequeue() {
+    if (this.data.length === 0) {
+      return null;
+    }
+    if (this.data.top === this.data.bottom) {
+      this.data.bottom = null;
+    }
+    this.data.top = this.data.top.next;
+    this.data.length--;
+    return this;
+  }
+}
+
+const myNewQueue = new QueueStack();
+myNewQueue.enqueue("Google");
+myNewQueue.enqueue("Youtube");
+myNewQueue.enqueue("Discord");
+console.log(myNewQueue.peek());
+myNewQueue.dequeue();
+myNewQueue.dequeue();
+myNewQueue.dequeue();
+// myNewQueue.dequeue();
+
+console.log(myNewQueue);
