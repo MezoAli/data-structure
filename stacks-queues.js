@@ -4,6 +4,7 @@ class Node {
     this.next = null;
   }
 }
+// implement stacks using linked lists
 
 class Stack {
   constructor() {
@@ -31,7 +32,10 @@ class Stack {
 
   pop() {
     if (this.length === 0) {
-      return undefined;
+      return null;
+    }
+    if (this.top === this.bottom) {
+      this.bottom = null;
     }
     const TopValue = this.top.value;
     this.top = this.top.next;
@@ -41,7 +45,7 @@ class Stack {
 
   peek() {
     if (this.length === 0) {
-      return this;
+      return null;
     }
     return this.top;
   }
@@ -52,9 +56,50 @@ myStack.push("Google");
 myStack.push("Youtube");
 myStack.push("Discord");
 console.log(myStack.pop());
+console.log(myStack.pop());
+console.log(myStack.pop());
 // console.log(myStack.pop());
 // console.log(myStack.pop());
 // console.log(myStack.pop());
 // console.log(myStack.peek());
 
-console.log(myStack);
+// console.log(myStack);
+
+// implement stack using Arrays
+
+class StackArray {
+  constructor() {
+    this.data = [];
+  }
+
+  push(value) {
+    this.data.push(value);
+  }
+
+  peek() {
+    if (this.data.length === 0) {
+      return null;
+    }
+    return this.data[this.data.length - 1];
+  }
+
+  pop() {
+    if (this.data.length === 0) {
+      return null;
+    }
+    const topItem = this.data[this.data.length - 1];
+    this.data.pop();
+    return topItem;
+  }
+}
+
+const myStack1 = new StackArray();
+myStack1.push("Google");
+myStack1.push("Youtube");
+myStack1.push("Discord");
+console.log(myStack1.peek());
+myStack1.pop();
+myStack1.pop();
+myStack1.pop();
+
+console.log(myStack1);
